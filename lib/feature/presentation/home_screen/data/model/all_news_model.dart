@@ -1,15 +1,16 @@
 // To parse this JSON data, do
 //
-//     final newsModel = newsModelFromJson(jsonString);
+//     final allNewsModel = allNewsModelFromJson(jsonString);
 
 import 'dart:convert';
 
-NewsModel newsModelFromJson(String str) => NewsModel.fromJson(json.decode(str));
+AllNewsModel allNewsModelFromJson(String str) =>
+    AllNewsModel.fromJson(json.decode(str));
 
-String newsModelToJson(NewsModel data) => json.encode(data.toJson());
+String allNewsModelToJson(AllNewsModel data) => json.encode(data.toJson());
 
-class NewsModel {
-  NewsModel({
+class AllNewsModel {
+  AllNewsModel({
     this.status,
     this.totalResults,
     this.articles,
@@ -19,7 +20,7 @@ class NewsModel {
   int? totalResults;
   List<Article>? articles;
 
-  factory NewsModel.fromJson(Map<String, dynamic> json) => NewsModel(
+  factory AllNewsModel.fromJson(Map<String, dynamic> json) => AllNewsModel(
         status: json["status"],
         totalResults: json["totalResults"],
         articles: List<Article>.from(
@@ -83,16 +84,48 @@ class Source {
     this.name,
   });
 
-  String? id;
+  Id? id;
   String? name;
 
   factory Source.fromJson(Map<String, dynamic> json) => Source(
-        id: json["id"],
+        id: idValues.map[json["id"]],
         name: json["name"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
+        "id": idValues.reverse[id],
         "name": name,
       };
+}
+
+enum Id {
+  ENGADGET,
+  CNN,
+  WIRED,
+  BUSINESS_INSIDER,
+  GOOGLE_NEWS,
+  REUTERS,
+  ARS_TECHNICA
+}
+
+final idValues = EnumValues({
+  "ars-technica": Id.ARS_TECHNICA,
+  "business-insider": Id.BUSINESS_INSIDER,
+  "cnn": Id.CNN,
+  "engadget": Id.ENGADGET,
+  "google-news": Id.GOOGLE_NEWS,
+  "reuters": Id.REUTERS,
+  "wired": Id.WIRED
+});
+
+class EnumValues<T> {
+  Map<String, T> map;
+  late Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    reverseMap = map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
+  }
 }

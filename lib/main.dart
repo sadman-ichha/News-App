@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/feature/presentation/splash_screen/views/splash_screen.dart';
 
 void main() {
@@ -10,13 +11,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        // fontFamily: "Nunito",
-      ),
-      home: const SplashScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(414, 850),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            fontFamily: "Nunito",
+          ),
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 }

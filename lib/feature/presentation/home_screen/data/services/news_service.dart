@@ -6,19 +6,19 @@ import 'package:news_app/feature/presentation/home_screen/data/model/breaking_ne
 
 class NewsApiService {
   final allNewsUri = Uri.parse(
-      "https://newsapi.org/v2/everything?q=tesla&from=2023-01-27&sortBy=publishedAt&apiKey=972a8deaa6b74efcb39de65ff6d6bdfd");
+      "https://newsapi.org/v2/everything?q=tesla&apiKey=972a8deaa6b74efcb39de65ff6d6bdfd");
 
   final breakingNewsUri = Uri.parse(
       "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=972a8deaa6b74efcb39de65ff6d6bdfd");
 
-  Future<NewsModel?> getAllNews() async {
+  Future<AllNewsModel?> getAllNews() async {
     try {
       http.Response response = await http.get(allNewsUri);
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonData = jsonDecode(response.body);
 
-        return NewsModel.fromJson(jsonData);
+        return AllNewsModel.fromJson(jsonData);
       } else {
         throw ("No artile found");
       }
@@ -33,7 +33,7 @@ class NewsApiService {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonData = jsonDecode(response.body);
-        print("aaaaaaaaaaaaaaaaaaaaaaaaaaa $jsonData");
+
         return BreakingNewsModel.fromJson(jsonData);
       } else {
         throw ("No artile found");
