@@ -6,10 +6,10 @@ import 'package:news_app/feature/presentation/home_screen/data/model/breaking_ne
 
 class NewsApiService {
   final allNewsUri = Uri.parse(
-      "https://newsapi.org/v2/everything?q=tesla&apiKey=972a8deaa6b74efcb39de65ff6d6bdfd");
+      "https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=972a8deaa6b74efcb39de65ff6d6bdfd");
 
   final breakingNewsUri = Uri.parse(
-      "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=972a8deaa6b74efcb39de65ff6d6bdfd");
+      "https://newsapi.org/v2/top-headlines?country=us&apiKey=972a8deaa6b74efcb39de65ff6d6bdfd");
 
   Future<AllNewsModel?> getAllNews() async {
     try {

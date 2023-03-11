@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/feature/presentation/home_screen/components/placeholder_effect.dart';
 
-
 import 'news_details.dart';
 
 class NewsListItem extends StatelessWidget {
-   NewsListItem({Key? key, required this.newsItemWidget})
-      : super(key: key);
+  NewsListItem({Key? key, required this.newsItemWidget}) : super(key: key);
 
-   var newsItemWidget;
+  var newsItemWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +46,10 @@ class NewsListItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0.r),
                     ),
                     child: Text(
-                      newsItemWidget!.source!.name.toString(),
+                      // ignore: prefer_if_null_operators
+                      newsItemWidget!.source!.name == null
+                          ? ""
+                          : newsItemWidget!.source!.name.toString(),
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),
