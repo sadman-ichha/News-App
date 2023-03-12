@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "All News",
+                  "All News" ,
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.w500,
