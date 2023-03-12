@@ -52,7 +52,7 @@ class _NewsDetailsState extends State<NewsDetails> {
             ),
           )
           ..loadRequest(
-            Uri.parse(widget.newsDetailsWidget.url.toString()),
+            Uri.parse(widget.newsDetailsWidget!.url.toString()),
           ),
       ),
     );
