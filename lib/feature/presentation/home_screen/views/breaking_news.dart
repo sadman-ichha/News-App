@@ -27,7 +27,7 @@ class _BreakingNewsState extends State<BreakingNews> {
                 itemCount: snapshot.data!.articles!.length,
                 itemBuilder: ((context, index) {
                   // news variable create
-                  var breakingNews = snapshot.data!.articles![index];
+                  dynamic breakingNews = snapshot.data!.articles![index];
                   // constructor with data pass/ news pass
                   return NewsListItem(newsItemWidget: breakingNews);
                 }),

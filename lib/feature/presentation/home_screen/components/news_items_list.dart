@@ -3,13 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/feature/presentation/home_screen/components/placeholder_effect.dart';
-import 'package:news_app/feature/presentation/home_screen/data/model/all_news_model.dart';
 import 'news_details.dart';
 
 class NewsListItem extends StatelessWidget {
   NewsListItem({super.key, required this.newsItemWidget});
 
-  var newsItemWidget;
+  dynamic newsItemWidget;
 
   @override
   Widget build(BuildContext context) {

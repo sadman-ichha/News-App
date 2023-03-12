@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+// ignore: must_be_immutable
 class NewsDetails extends StatefulWidget {
   NewsDetails({super.key, required this.newsDetailsWidget});
 
-  var newsDetailsWidget;
+  dynamic newsDetailsWidget;
 
   @override
   State<NewsDetails> createState() => _NewsDetailsState();
 }
-
-// final Completer<WebViewController> _controller = Completer<WebViewController>();
-
-// final WebViewController controller =
 
 class _NewsDetailsState extends State<NewsDetails> {
   @override
@@ -44,7 +41,7 @@ class _NewsDetailsState extends State<NewsDetails> {
               onPageStarted: (String url) {},
               onPageFinished: (String url) {},
               onWebResourceError: (WebResourceError error) {
-                print(error);
+                // print(error);
               },
               onNavigationRequest: (NavigationRequest request) {
                 if (request.url.startsWith('https://www.google.com/')) {
