@@ -85,38 +85,28 @@ class Source {
   });
 
   Id? id;
-  String? name;
+  Name? name;
 
   factory Source.fromJson(Map<String, dynamic> json) => Source(
         id: idValues.map[json["id"]],
-        name: json["name"],
+        name: nameValues.map[json["name"]],
       );
 
   Map<String, dynamic> toJson() => {
         "id": idValues.reverse[id],
-        "name": name,
+        "name": nameValues.reverse[name],
       };
 }
 
-enum Id {
-  ENGADGET,
-  CNN,
-  WIRED,
-  BUSINESS_INSIDER,
-  GOOGLE_NEWS,
-  REUTERS,
-  ARS_TECHNICA
-}
+enum Id { TECHCRUNCH, THE_NEXT_WEB }
 
-final idValues = EnumValues({
-  "ars-technica": Id.ARS_TECHNICA,
-  "business-insider": Id.BUSINESS_INSIDER,
-  "cnn": Id.CNN,
-  "engadget": Id.ENGADGET,
-  "google-news": Id.GOOGLE_NEWS,
-  "reuters": Id.REUTERS,
-  "wired": Id.WIRED
-});
+final idValues =
+    EnumValues({"techcrunch": Id.TECHCRUNCH, "the-next-web": Id.THE_NEXT_WEB});
+
+enum Name { TECH_CRUNCH, THE_NEXT_WEB }
+
+final nameValues = EnumValues(
+    {"TechCrunch": Name.TECH_CRUNCH, "The Next Web": Name.THE_NEXT_WEB});
 
 class EnumValues<T> {
   Map<String, T> map;

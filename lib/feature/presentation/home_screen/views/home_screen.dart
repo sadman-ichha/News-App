@@ -11,20 +11,50 @@ class HomeScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("News"),
+          title: const Text(
+            "News",
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+          ),
           centerTitle: true,
+          backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
-          bottom: const TabBar(tabs: [
-            Text("Breaking"),
-            Text("All News"),
-            
-          ]),
+          bottom: const TabBar(
+            tabs: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Breaking",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "All News",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-        body: TabBarView(children: [
-          BreakingNews(),
-          AllNews(),
-          
-        ]),
+        body: const TabBarView(
+          children: [
+            BreakingNews(),
+            AllNews(),
+          ],
+        ),
       ),
     );
   }

@@ -49,7 +49,7 @@ class Article {
   });
 
   Source? source;
-  Author? author;
+  String? author;
   String? title;
   String? description;
   String? url;
@@ -59,7 +59,7 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
         source: Source.fromJson(json["source"]),
-        author: authorValues.map[json["author"]],
+        author: json["author"],
         title: json["title"],
         description: json["description"],
         url: json["url"],
@@ -70,7 +70,7 @@ class Article {
 
   Map<String, dynamic> toJson() => {
         "source": source!.toJson(),
-        "author": authorValues.reverse[author],
+        "author": author,
         "title": title,
         "description": description,
         "url": url,
@@ -80,42 +80,22 @@ class Article {
       };
 }
 
-enum Author { BBC_NEWS }
-
-final authorValues = EnumValues({"BBC News": Author.BBC_NEWS});
-
 class Source {
   Source({
     this.id,
     this.name,
   });
 
-  Id? id;
-  Author? name;
+  String? id;
+  String? name;
 
   factory Source.fromJson(Map<String, dynamic> json) => Source(
-        id: idValues.map[json["id"]],
-        name: authorValues.map[json["name"]],
+        id: json["id"],
+        name: json["name"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": idValues.reverse[id],
-        "name": authorValues.reverse[name],
+        "id": id,
+        "name": name,
       };
-}
-
-enum Id { BBC_NEWS }
-
-final idValues = EnumValues({"bbc-news": Id.BBC_NEWS});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

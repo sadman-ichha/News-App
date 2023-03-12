@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/feature/presentation/home_screen/components/placeholder_effect.dart';
-
+import 'package:news_app/feature/presentation/home_screen/data/model/all_news_model.dart';
 import 'news_details.dart';
 
 class NewsListItem extends StatelessWidget {
-  NewsListItem({Key? key, required this.newsItemWidget}) : super(key: key);
+  NewsListItem({super.key, required this.newsItemWidget});
 
   var newsItemWidget;
 
@@ -32,11 +32,11 @@ class NewsListItem extends StatelessWidget {
                 fit: BoxFit.fitWidth,
                 width: double.infinity,
                 height: 250.0.h,
-                imageUrl: newsItemWidget!.urlToImage.toString(),
+                imageUrl: newsItemWidget.urlToImage.toString(),
                 placeholder: (context, url) => const PlaceholderEffect(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-              SizedBox(height: 8.0.h),
+              SizedBox(height: 10.0.h),
               Row(
                 children: [
                   Container(
@@ -47,27 +47,29 @@ class NewsListItem extends StatelessWidget {
                     ),
                     child: Text(
                       // ignore: prefer_if_null_operators
-                      newsItemWidget!.source!.name == null
+                      newsItemWidget.source!.name == null
                           ? ""
-                          : newsItemWidget!.source!.name.toString(),
+                          : newsItemWidget.source!.name.toString(),
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ],
               ),
-              SizedBox(width: 8.0.w),
-              Text(newsItemWidget!.publishedAt.toString()),
+              SizedBox(height: 8.0.w),
+              Text(newsItemWidget.publishedAt.toString()),
               SizedBox(height: 5.0.h),
               Text(
-                newsItemWidget!.title.toString(),
+                newsItemWidget.title.toString(),
                 style:
                     TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 8.0.h),
-              Text(
-                "Written by: ${newsItemWidget!.author}",
-                style: TextStyle(fontSize: 14.0.sp),
-              ),
+              newsItemWidget.author == null
+                  ? const SizedBox(height: 6.0)
+                  : Text(
+                      "Written by: ${newsItemWidget.author}",
+                      style: TextStyle(fontSize: 14.0.sp),
+                    ),
               SizedBox(height: 8.0.h),
             ],
           ),

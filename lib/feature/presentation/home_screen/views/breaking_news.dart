@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/feature/presentation/home_screen/components/news_items_list.dart';
-
-import 'package:news_app/feature/presentation/home_screen/data/model/breaking_news.dart';
 import 'package:news_app/feature/presentation/home_screen/data/services/news_service.dart';
 
 class BreakingNews extends StatefulWidget {
@@ -29,7 +27,7 @@ class _BreakingNewsState extends State<BreakingNews> {
                 itemCount: snapshot.data!.articles!.length,
                 itemBuilder: ((context, index) {
                   // news variable create
-                  Article breakingNews = snapshot.data!.articles![index];
+                  var breakingNews = snapshot.data!.articles![index];
                   // constructor with data pass/ news pass
                   return NewsListItem(newsItemWidget: breakingNews);
                 }),
