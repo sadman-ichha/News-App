@@ -2,7 +2,7 @@
     package="com.example.news_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="news_app"
+        android:label="News Hub"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         android:usesCleartextTraffic="true"
